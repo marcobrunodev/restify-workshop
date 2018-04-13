@@ -44,11 +44,10 @@ Rodar o comando para definirmos as propriedades do projeto (lembre-se que você 
 ```
 npm init
 ```
-![Imagem das peguntas que são feitas após o comando npm init](img/como-comecar-um-projeto-qualquer-em-nodejs/npm-init.mp4)
+![Imagem das peguntas que são feitas após o comando npm init](img/como-comecar-um-projeto-qualquer-em-nodejs/npm-init.gif)
 
 Assim que você der o ENTER após o comando você irá começar a responder as peguntas sobre as propriedades do seu projeto, no momento que você terminar de responder essas perguntas, será apresentado um resumo onde você poderá verificar se está tudo certo, uma vez que você confirmar, nesse momento será criado pelo *npm* um arquivo chamado **package.json** e é nesse arquivo que é guardado todas as suas respostas. Vamos falar mais sobre esse arquivo durante os próximos exercícios.
 
-Projeto do workshop de restify do meetup Front End SP
 # 
 
 
