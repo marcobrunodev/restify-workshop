@@ -186,7 +186,8 @@ node index.js
 
 Se você tentar acessar o nosso servidor pelo browser verá que estão sem resposta e o nosso browser ficará perdido esperando a resposta do servidor.
 
-3. Dentro da função que passamos como segundo parâmetro para o método *get* precisamos criar a nossa resposta com o JSON que terá a chave *msg* e dentro dessa chave o conteúdo "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados":
+3. Dentro da função que passamos como segundo parâmetro para o método *get* precisamos criar a nossa resposta com o JSON que terá a chave *msg* e dentro dessa chave o conteúdo "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados".
+Na função que passamos para o método *get* recebe dois parâmentro, sendo o primeiro as informações da *request* (requisição) e o segundo as informações do *response* (resposta), vamos chamar o primeiro parâmetro de *req* e segundo de *res*. Pra responder nossa requisição vamos utilziar o método *send* que está disponível no parâmetro *res*, e o nosso JSON com a chave *msg* será passado como parâmero do método *send*:
 
 ### Arquivo index.js
 ```
@@ -196,7 +197,7 @@ const port = 3000
 const server = restify.createServer()
 
 server.get('/', (req, res) => {
-  res.send({msg: "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"})
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
 })
 
 server.listen(port, () => {
@@ -328,3 +329,80 @@ Pronto! Agora toda vez que fizermos uma alteração no nosso código não será 
 
 **--Importante--** Se você criar um arquivo novo e fizer alterações nele o *nodemon* poderá não reconhecer esse arquivo novo, então nesse caso é necessário derrubar o *nodemon* apertando **ctrl + c** e depois rodar o comando ```npm run dev``` no terminal para subir novamente o nosso servidor e a partir desse momento ele saberá que o arquivo que criamos existe e qualquer alteração que vier acontecer será considera e o servidor voltará ser reiniciado novamente.
 
+# 06. Criando um recurso para retornar os nomes e seus significado
+Primeiro precisamos criar o path **/nome** que terá a responsabilidade de responder todos os nomes cadastrados e seus significados. Como até o momento não temos um banco de dados vamos guardar 3 nomes e seus significados em uma lista. Só escolher três nomes dessa tabela a seguir ou procurar o seu e de duas pessoas que gosta e colocar na lista:
+```
+╔═══════════╦══════════════════════════════════════════════════════╗
+║   nome    ║                 significado                          ║ 
+╠═══════════╬══════════════════════════════════════════════════════║
+║ Henri     ║ O governante da casa, senhor do lar                  ║ 
+║ Joviane   ║ Presente de Júpiter                                  ║ 
+║ Rafael    ║ Deus curou ou curado por Deus                        ║ 
+║ Alex      ║ Protetor do homem ou defensor da humanidade          ║
+║ Ian       ║ Deus é gracioso, presente de Deus ou graça de Deus   ║
+║ Luna      ║ Lua, a iluminada, a feminina                         ║ 
+╚═══════════╩══════════════════════════════════════════════════════╝
+```
+
+O código para criar essa resposta não tem nada de novo, sendo assim tente implementar sem o olhar a seção **Passo a passo com código**.
+
+## Passo a passo com código
+1. Vamos criar um recurso para responder o seguinte *path*: **/nome**. Para isso entre no arquivo **index.js** e utilize o método *get* disponível na nossa variável *server* da mesma forma que fizemos no exercício de criar uma resposta para a o *path* da home (**/**):
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
+})
+
+server.get('/nome', () => {
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
+2. Agora precisamos adicionar os dois parâmetros para a função que passamos no segundo parâmentro do méodo *get*, os parâmentros são *req* e *res*. Em seguida podemos criar um variável chamadas *names* que guardará 3 nomes e seus significados, para podermos passar essa variável dentro do método *send* de nosso parâmetro *res*:
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
+})
+
+server.get('/nome', (req, res) => {
+  const names = [
+    {
+      name: 'Henri',
+      meaning: 'O governante da casa, senhor do lar'
+    },
+    {
+      name: 'Joviane',
+      meaning: 'Presente de Júpiter'
+    },
+    {
+      name: 'Luna',
+      meaning: 'Lua, a iluminada, a feminina'
+    }
+  ]
+
+  res.send(names)
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
