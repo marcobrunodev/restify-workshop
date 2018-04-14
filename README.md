@@ -214,3 +214,117 @@ node index.js
 
 Agora se você voltar ao *broser* e acessar http://localhost:3000 verá a seguinte resposta:
 ![](img/primeira-resposta-da-home.png)
+
+# Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon
+
+## Objetivo
+Toda vez que fazemos uma alteração no nosso código precisamos ficar reiniciando o servidor na mão, esse trabalho é chato, felizmente temos uma solução desenvolvida pela comunidade chamada **nodemon**. Por tanto, vamos instalar ela mas apenas como uma dependência do ambiente de desenvolvimento dado que não vamos utilizar o **nodemon** em produção.
+
+Também vamos criar o nosso primeiro *npm script* para não termos que instalar o **nodemon** como uma dependência global e sim uma dependência apenas do nosso projeto. Sempre que possível é uma boa prática evitar dependências globais porque elas são dificieis de administrar, por exemplo: imagine que temos dois projetos feitos em *node* e ambos estão utilizando o *nodemon* mas os projetos utilizam versões diferentes do *nodemon*. Se você estiver com *nodemon* instalado de forma global só poderá ter um versão do *nodemon* em sua máquina, causando assim a necessidade de ficar trocando de versão do *nodemon* quando trocar o projeto que você estiver trabalhando.
+
+## Passo a passo com código
+1. Para instalar o **nodemon** como uma dependência apenas para o ambiente de desenvolvimento, não deixaremos de utilizar o gerenciador de pacotes do *node* o *npm*, mas dessa vez vamos também passar um parâmetro *--save-dev* para informar que o **nodemon** será apenas útil ao ambiente de *dev* (abreviação que utilziamos pra falar do ambiente de desenvolvimento que vem da palavra me inglês developer):
+
+### Terminal
+```
+npm i nodemon --save-dev
+```
+
+Agora que instalamos o **nodemon** como uma dependência de um ambiente específico, o *npm* adiciona uma nova chave (*devDependencies*) para as dependências do ambiente de *dev*, por isso que o seu **package.json** ficará dessa forma:
+
+### Arquivo package.json
+```
+{
+  "name": "restify-workshop",
+  "version": "1.0.0",
+  "description": "Projeto do workshop de restify do meetup Front End SP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoBrunoBR/restify-workshop.git"
+  },
+  "keywords": [
+    "restify"
+  ],
+  "author": "Marco Bruno",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/MarcoBrunoBR/restify-workshop/issues"
+  },
+  "homepage": "https://github.com/MarcoBrunoBR/restify-workshop#readme",
+  "dependencies": {
+    "restify": "^7.1.1",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
+```
+
+2. Com o **nodemon** instalado, não vamos mais subir o servidor como estavamos fazendo anteriormente:
+
+### Terminal
+```
+node index.js
+```
+
+No lugar do comando *node* vamos utilizar o comando *node_modules/nodemon/bin/nodemon.js*, por isso vamos subir nosso servidor assim no terminal:
+
+### Terminal
+```
+node_modules/nodemon/bin/nodemon.js index.js
+``` 
+
+3. Triste ter que escrever um caminho tão grande toda vez que tivermos que utilizar o *nodemon*, felizmente tem uma caminho feliz pra resolver isso, só precisamos ir até o nosso arquivo **package.json** e adicionar um *npm script* com a chave *dev* e nessa chave passar o conteúdo *nodemon index.js*. Ah! Se no seu *package.json* a chave *main* estiver com o valor correto do arquivo que é o início da sua aplicação, então não é necessário passar no conteúdo da chave *dev* o arquivo *index.js* deixando o conteúdo da chave ainda mais simples e apenas com o valor *nodemon*. Isso acontece porque uma vez que não passamos qual é o arquivo que queremos iniciar com o *nodemon* o próprio *nodemon* executa o arquivo que passamos na chave *main*. Bom, altere seu arquivo **package.json** adicionando apenas uma linha de código dentro da chave *scripts* que já existe no arquivo:
+
+### Arquivo package.json
+```
+{
+  "name": "restify-workshop",
+  "version": "1.0.0",
+  "description": "Projeto do workshop de restify do meetup Front End SP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoBrunoBR/restify-workshop.git"
+  },
+  "keywords": [
+    "restify"
+  ],
+  "author": "Marco Bruno",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/MarcoBrunoBR/restify-workshop/issues"
+  },
+  "homepage": "https://github.com/MarcoBrunoBR/restify-workshop#readme",
+  "dependencies": {
+    "restify": "^7.1.1",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
+```
+
+Feita essa alteração no arquivo **package.json** podemos subir o nosso servidor utilizando o *nodemon* com o seguinte comando no terminal:
+
+### Terminal
+```
+npm run dev
+```
+
+Pronto! Agora toda vez que fizermos uma alteração no nosso código não será mais necessário reiniciar o servidor na mão, o próprio *nodemon* fará o trabalho para nós. 
+
+**Importante** Se você criar um arquivo novo e fizer alterações nele o *nodemon* poderá não reconhecer esse arquivo novo, então nesse caso é necessário derrubar o *nodemon* apertando **ctrl + c** e depois rodar o comando ```npm run dev``` no terminal para subir novamente o nosso servidor e a partir desse momento ele saberá que o arquivo que criamos existe e qualquer alteração que vier acontecer será considera e o servidor voltará ser reiniciado novamente.
+

@@ -4,7 +4,8 @@
   "description": "Projeto do workshop de restify do meetup Front End SP",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,11 @@
   },
   "homepage": "https://github.com/MarcoBrunoBR/restify-workshop#readme",
   "dependencies": {
-    "restify": "^7.1.1"
+    "restify": "^7.1.1",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }
