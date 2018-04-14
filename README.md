@@ -130,4 +130,4 @@ server.listen(port, () => {
 
 Só pra termos certeza que o servidor está de pé vamos até o browser (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
 
-![](img/resultado-no-browser.png)
+![](img/como-comecar-um-projeto-qualquer-em-nodejs/resultado-no-browser.png)
