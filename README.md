@@ -3,11 +3,11 @@
 2. [Como criar um servidor HTTP com Restify](#02-como-criar-um-servidor-http-com-restify)
 3. [O que é importante saber sobre o HTTP antes de sair codando](#03-o-que-é-importante-saber-sobre-o-http-antes-de-sair-codando)
 4. [Como criar uma respota para o path /](#04-como-criar-uma-resposta-para-path-)
+5. [Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon!](#05-chato-demais-ter-que-ficar-reiniciando-o-servidor-na-mão-que-venha-o-nodemon)
 
 # O que você aprenderá no workshop
 
 # Configurações necessário para começar o workshop
-
 
 # 01. Como começar um projeto qualquer em NodeJS
 
@@ -326,5 +326,5 @@ npm run dev
 
 Pronto! Agora toda vez que fizermos uma alteração no nosso código não será mais necessário reiniciar o servidor na mão, o próprio *nodemon* fará o trabalho para nós. 
 
-**Importante** Se você criar um arquivo novo e fizer alterações nele o *nodemon* poderá não reconhecer esse arquivo novo, então nesse caso é necessário derrubar o *nodemon* apertando **ctrl + c** e depois rodar o comando ```npm run dev``` no terminal para subir novamente o nosso servidor e a partir desse momento ele saberá que o arquivo que criamos existe e qualquer alteração que vier acontecer será considera e o servidor voltará ser reiniciado novamente.
+**--Importante--** Se você criar um arquivo novo e fizer alterações nele o *nodemon* poderá não reconhecer esse arquivo novo, então nesse caso é necessário derrubar o *nodemon* apertando **ctrl + c** e depois rodar o comando ```npm run dev``` no terminal para subir novamente o nosso servidor e a partir desse momento ele saberá que o arquivo que criamos existe e qualquer alteração que vier acontecer será considera e o servidor voltará ser reiniciado novamente.
 
