@@ -1,12 +1,12 @@
 # Índice
-1. [Como começar um projeto qualquer em NodeJS](#primeiro)
+1. [Como começar um projeto qualquer em NodeJS](#01)
 
 # O que você aprenderá no workshop
 
 # Configurações necessário para começar o workshop
 
-#primeiro
-# 01. Como começar um projeto qualquer em NodeJS
+
+# 01. Como começar um projeto qualquer em NodeJS (#01)
 
 ## Objetivo
 Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mal mas não sei qual seria o paralelo no Windows.
