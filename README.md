@@ -2,7 +2,7 @@
 
 # Configurações necessário para começar o workshop
 
-# Como começar um projeto qualquer em NodeJS
+# 01. Como começar um projeto qualquer em NodeJS
 
 ## Objetivo
 Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mal mas não sei qual seria o paralelo no Windows.
@@ -48,7 +48,7 @@ npm init
 
 Assim que você der o ENTER após o comando você irá começar a responder as peguntas sobre as propriedades do seu projeto, no momento que você terminar de responder essas perguntas, será apresentado um resumo onde você poderá verificar se está tudo certo, uma vez que você confirmar, nesse momento será criado pelo *npm* um arquivo chamado **package.json** e é nesse arquivo que é guardado todas as suas respostas. Vamos falar mais sobre esse arquivo durante os próximos exercícios.
 
-# Como criar um servidor HTTP com Restify
+# 02. Como criar um servidor HTTP com Restify
 
 ## Objetivo
 Criar um servidor HTTP sem utilizar um framework é bem triste e você sofrerá muito, tudo que você sofrerá já foi resolvido pela comunidade por isso usamos um framework como o Restify. Tem outros problemas sobre não usar um framework como mostrei nesse post:
