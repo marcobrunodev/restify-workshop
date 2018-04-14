@@ -49,7 +49,7 @@ Rodar o comando para definirmos as propriedades do projeto (lembre-se que você 
 ```
 npm init
 ```
-![Imagem das peguntas que são feitas após o comando npm init](img/como-comecar-um-projeto-qualquer-em-nodejs/npm-init.gif)
+![Imagem das peguntas que são feitas após o comando npm init](img/npm-init.gif)
 
 Assim que você der o ENTER após o comando você irá começar a responder as peguntas sobre as propriedades do seu projeto, no momento que você terminar de responder essas perguntas, será apresentado um resumo onde você poderá verificar se está tudo certo, uma vez que você confirmar, nesse momento será criado pelo *npm* um arquivo chamado **package.json** e é nesse arquivo que é guardado todas as suas respostas. Vamos falar mais sobre esse arquivo durante os próximos exercícios.
 
@@ -135,6 +135,9 @@ server.listen(port, () => {
 
 Só pra termos certeza que o servidor está de pé vamos até o browser (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
 
-![](img/como-comecar-um-projeto-qualquer-em-nodejs/resultado-no-browser.png)
+![](img/resultado-no-browser.png)
 
-# 03. 
+# 03. O que é importante saber sobre o HTTP antes de sair codando
+Ese conteúdo vou deixar pra explicar em aula e deixar você fazer suas anotações, mas vale deixar alguma representação visual inicial sobre como fuciona o HTTP:
+
+![](img/lousa-http-api-rest.png)
