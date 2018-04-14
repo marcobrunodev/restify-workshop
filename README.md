@@ -1,5 +1,6 @@
 # Índice
 1. [Como começar um projeto qualquer em NodeJS](#01-como-começar-um-projeto-qualquer-em-nodejs)
+2. [Como criar um servidor HTTP com Restify](##02-como-criar-um-servidor-http-com-restify)
 
 # O que você aprenderá no workshop
 
