@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/MarcoBrunoBR/restify-workshop/issues"
   },
-  "homepage": "https://github.com/MarcoBrunoBR/restify-workshop#readme"
+  "homepage": "https://github.com/MarcoBrunoBR/restify-workshop#readme",
+  "dependencies": {
+    "restify": "^7.1.1"
+  }
 }
