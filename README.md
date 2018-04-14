@@ -141,3 +141,5 @@ Só pra termos certeza que o servidor está de pé vamos até o browser (navegad
 Ese conteúdo vou deixar pra explicar em aula e deixar você fazer suas anotações, mas vale deixar alguma representação visual inicial sobre como fuciona o HTTP:
 
 ![](img/lousa-http-api-rest.png)
+
+Prentendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás dele, mas ainda não está feito, por enquanto será a explicação em aula :-)
