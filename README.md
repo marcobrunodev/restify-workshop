@@ -215,7 +215,7 @@ node index.js
 Agora se você voltar ao *broser* e acessar http://localhost:3000 verá a seguinte resposta:
 ![](img/primeira-resposta-da-home.png)
 
-# Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon
+# 05. Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon!
 
 ## Objetivo
 Toda vez que fazemos uma alteração no nosso código precisamos ficar reiniciando o servidor na mão, esse trabalho é chato, felizmente temos uma solução desenvolvida pela comunidade chamada **nodemon**. Por tanto, vamos instalar ela mas apenas como uma dependência do ambiente de desenvolvimento dado que não vamos utilizar o **nodemon** em produção.
