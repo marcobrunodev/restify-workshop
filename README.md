@@ -1,8 +1,11 @@
+# Índice
+1. [Como começar um projeto qualquer em NodeJS](#01)
+
 # O que você aprenderá no workshop
 
 # Configurações necessário para começar o workshop
 
-# 01. Como começar um projeto qualquer em NodeJS
+# 01. Como começar um projeto qualquer em NodeJS #01
 
 ## Objetivo
 Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mal mas não sei qual seria o paralelo no Windows.
@@ -131,3 +134,5 @@ server.listen(port, () => {
 Só pra termos certeza que o servidor está de pé vamos até o browser (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
 
 ![](img/como-comecar-um-projeto-qualquer-em-nodejs/resultado-no-browser.png)
+
+# 03. 
