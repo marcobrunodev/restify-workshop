@@ -4,6 +4,7 @@
 3. [O que é importante saber sobre o HTTP antes de sair codando](#03-o-que-é-importante-saber-sobre-o-http-antes-de-sair-codando)
 4. [Como criar uma respota para o path /](#04-como-criar-uma-resposta-para-path-)
 5. [Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon!](#05-chato-demais-ter-que-ficar-reiniciando-o-servidor-na-mão-que-venha-o-nodemon)
+6. [Criando um recurso para retornar os nomes e seus significado](#06-criando-um-recurso-para-retornar-os-nomes-e-seus-significado)
 
 # O que você aprenderá no workshop
 
@@ -406,3 +407,7 @@ server.listen(port, () => {
   console.log('Pra derrubar o servidor: ctrl + c')
 })
 ```
+
+# 07. O nomes não podem ficar em um lista. Que venha o MongoDB.
+
+## Objetivo
