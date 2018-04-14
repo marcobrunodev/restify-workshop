@@ -1,11 +1,11 @@
 # Índice
-1. [Como começar um projeto qualquer em NodeJS](#01)
+1. [Como começar um projeto qualquer em NodeJS](#primeiro)
 
 # O que você aprenderá no workshop
 
 # Configurações necessário para começar o workshop
 
-#01
+#primeiro
 # 01. Como começar um projeto qualquer em NodeJS
 
 ## Objetivo
