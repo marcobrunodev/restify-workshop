@@ -2,6 +2,7 @@
 1. [Como começar um projeto qualquer em NodeJS](#01-como-começar-um-projeto-qualquer-em-nodejs)
 2. [Como criar um servidor HTTP com Restify](#02-como-criar-um-servidor-http-com-restify)
 3. [O que é importante saber sobre o HTTP antes de sair codando](#03-o-que-é-importante-saber-sobre-o-http-antes-de-sair-codando)
+4. [Como criar uma respota para o path /][]
 
 # O que você aprenderá no workshop
 
@@ -13,7 +14,7 @@
 ## Objetivo
 Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mal mas não sei qual seria o paralelo no Windows.
 
-Vamos utilziar o npm para iniciar o nosos projeto com NodeJS definindo as seguintes propriedades do nosso projeto:
+Vamos utilizar o npm para iniciar o nosso projeto com NodeJS definindo as seguintes propriedades do nosso projeto:
 - Nome (package name);
 - Versão (version);
 - Descrição (description);
@@ -134,13 +135,82 @@ server.listen(port, () => {
 })
 ```
 
-Só pra termos certeza que o servidor está de pé vamos até o browser (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
+5. Agora que terminamos o nosso código responsável por criar o nosso servidor, por favor abra o seu terminal e navegue até a pasta do nosso projeto (**restify-workshop**) dentro da pasta rode o comando abaixo para que o nosso código seja rodado pela plataforma NodeJS:
+
+### Terminal
+```
+node index.js
+```
+
+Só pra termos certeza que o servidor está de pé vamos até o *browser* (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
 
 ![](img/resultado-no-browser.png)
 
 # 03. O que é importante saber sobre o HTTP antes de sair codando
-Ese conteúdo vou deixar pra explicar em aula e deixar você fazer suas anotações, mas vale deixar alguma representação visual inicial sobre como fuciona o HTTP:
+Esse conteúdo vou deixar pra explicar em aula e deixar você fazer suas anotações, mas vale deixar alguma representação visual sobre como funciona o HTTP:
 
 ![](img/lousa-http-api-rest.png)
 
-Prentendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás dele, mas ainda não está feito, por enquanto será a explicação em aula :-)
+Pretendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás dele, mas ainda não está feito, por enquanto será a explicação da aula mesmo :-)
+
+# 04. Como criar uma resposta para path /
+
+## Objetivo
+Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos como resposta um erro que o próprio **restify** criou pra nós, queremos trocar essa mensagem padrão com uma resposta que estará no nosso controle. Nessa reposta vamos implementar um JSON com a chave *msg* e o valor será "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"
+
+## Passo a passo com código
+1. Abra o arquivo **index.js**, dentro dele vamos chamar o método *get* que esta disponível na variável *server*, esse método espera receber dois parâmetros sendo o primeiro qual o *path* que estamos mapeando para criar um resposta e o segundo parâmentro é uma função que será executado no momento que o usuário fazer uma requisição do tipo GET para o *path* que informamos no primeiro parâmentro:
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', () => {
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
+2. Pra que a alteração que nós fizemos no nosso código seja atualizado no nosso servidor precisamos reiniciar o nosso servidor, por isso precisamos ir até o terminal onde temos o nosso servidor de pé e derrubar ele apertando **ctrl + c** e logo em seguida rodar novamente o comando a seguir no terminal para colocarmos o servidor de pé novamente:
+
+### Terminal
+```
+node index.js
+```
+
+Se você tentar acessar o nosso servidor pelo browser verá que estão sem resposta e o nosso browser ficará perdido esperando a resposta do servidor.
+
+3. Dentro da função que passamos como segundo parâmetro para o método *get* precisamos criar a nossa resposta com o JSON que terá a chave *msg* e dentro dessa chave o conteúdo "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados":
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"})
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
+Lembre-se que precisamos reinicair o servidor para que o nosso código seja atualizado, pra isso precisamos ir até o terminal onde nosso servidor está rodando e apertar **ctrl + c** e depois rodar o comando abaixo:
+
+### Terminal
+```
+node index.js
+``` 
+
+Agora se você voltar ao *broser* e acessar http://localhost:3000 verá a seguinte resposta:
+![](img/primeira-resposta-da-home.png)

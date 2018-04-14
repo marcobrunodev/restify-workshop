@@ -4,7 +4,7 @@ const port = 3000
 const server = restify.createServer()
 
 server.get('/', (req, res) => {
-  res.send('Ae! Servidor criado veio com respostas para o path /.')
+  res.send({msg: "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"})
 })
 
 server.listen(port, () => {
