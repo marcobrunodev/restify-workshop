@@ -13,7 +13,7 @@
 # 01. Como começar um projeto qualquer em NodeJS
 
 ## Objetivo
-Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mal mas não sei qual seria o paralelo no Windows.
+Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mas não sei qual seria o paralelo no Windows.
 
 Vamos utilizar o npm para iniciar o nosso projeto com NodeJS definindo as seguintes propriedades do nosso projeto:
 - Nome (package name);
@@ -112,7 +112,7 @@ Após rodar esse comando, você verá que no arquivo **package.json** foi adicio
 const restify = require('restify')
 ```
 
-3. Em seguida precisamos criar um servidor utilizando o *restify*. Para isso utilizamos o método *createSever()* que é um recurso da nossa variável *restify*, esse método retorna pra gente um servidor que guardaremos dentro da varíavel *server* (servidor). Estamos utilizando o nome das variaveis em inglês porque você será cobrado pelo mercado de trabalho para escrever dessa maneira, por favor não me leve a mal se você não souber inglês eu tiver dificuldade como eu também tenho.
+3. Em seguida precisamos criar um servidor utilizando o *restify*. Para isso utilizamos o método *createSever()* que é um recurso da nossa variável *restify*, esse método retorna pra gente um servidor que guardaremos dentro da varíavel *server* (servidor). Estamos utilizando o nome das variaveis em inglês porque você será cobrado pelo mercado de trabalho para escrever dessa maneira, por favor não me leve a mal se você não souber inglês ou tiver dificuldade como eu também tenho.
 
 ### Arquivo index.js
 ```
@@ -121,7 +121,7 @@ const restify = require('restify')
 const server = restify.createServer()
 ```
 
-4. Infelizmente não estamos com o nosso servidor de pé só criamos ele, para colocar o servidor de pé precisamos chamar o método *liten* que está disponivel na variavel *server*, esse método espera receber dois parâmetros sendo o primeiro a porta e o segundo uma função que será executada no mommento que o servidor estiver disponível, dentro dessa função vamos ter dois *console.log*, um que falará onde o sevidor está de pé e o outro falará como faz para derrubar o servidor. Pra manter a legibilidade do código vamos criar um variável chamada *port* (porta) que guardará a nossa porta com o valor 3000.
+4. Infelizmente não estamos com o nosso servidor de pé só criamos ele, para colocar o servidor de pé precisamos chamar o método *liten* que está disponivel na variavel *server*, esse método espera receber dois parâmetros sendo o primeiro a porta e o segundo uma função que será executada no momento que o servidor estiver disponível, dentro dessa função vamos ter dois *console.log*, um que falará onde o sevidor está de pé e o outro falará como faz para derrubar o servidor. Pra manter a legibilidade do código vamos criar um variável chamada *port* (porta) que guardará a nossa porta com o valor 3000.
 
 ### Arquivo index.js
 ```
@@ -160,7 +160,7 @@ Pretendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás de
 Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos como resposta um erro que o próprio **restify** criou pra nós, queremos trocar essa mensagem padrão com uma resposta que estará no nosso controle. Nessa reposta vamos implementar um JSON com a chave *msg* e o valor será "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"
 
 ## Passo a passo com código
-1. Abra o arquivo **index.js**, dentro dele vamos chamar o método *get* que esta disponível na variável *server*, esse método espera receber dois parâmetros sendo o primeiro qual o *path* que estamos mapeando para criar um resposta e o segundo parâmentro é uma função que será executado no momento que o usuário fazer uma requisição do tipo GET para o *path* que informamos no primeiro parâmentro:
+1. Abra o arquivo **index.js**, dentro dele vamos chamar o método *get* que esta disponível na variável *server*, esse método espera receber dois parâmetros sendo o primeiro qual o *path* que estamos mapeando para criar um resposta e o segundo parâmetro é uma função que será executado no momento que o usuário fizer uma requisição do tipo GET para o *path* que informamos no primeiro parâmetro:
 
 ### Arquivo index.js
 ```
@@ -188,7 +188,7 @@ node index.js
 Se você tentar acessar o nosso servidor pelo browser verá que estão sem resposta e o nosso browser ficará perdido esperando a resposta do servidor.
 
 3. Dentro da função que passamos como segundo parâmetro para o método *get* precisamos criar a nossa resposta com o JSON que terá a chave *msg* e dentro dessa chave o conteúdo "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados".
-Na função que passamos para o método *get* recebe dois parâmentro, sendo o primeiro as informações da *request* (requisição) e o segundo as informações do *response* (resposta), vamos chamar o primeiro parâmetro de *req* e segundo de *res*. Pra responder nossa requisição vamos utilziar o método *send* que está disponível no parâmetro *res*, e o nosso JSON com a chave *msg* será passado como parâmero do método *send*:
+Na função que passamos para o método *get* recebe dois parâmetro, sendo o primeiro as informações da *request* (requisição) e o segundo as informações do *response* (resposta), vamos chamar o primeiro parâmetro de *req* e segundo de *res*. Pra responder nossa requisição vamos utilizar o método *send* que está disponível no parâmetro *res*, e o nosso JSON com a chave *msg* será passado como parâmero do método *send*:
 
 ### Arquivo index.js
 ```
@@ -207,7 +207,7 @@ server.listen(port, () => {
 })
 ```
 
-Lembre-se que precisamos reinicair o servidor para que o nosso código seja atualizado, pra isso precisamos ir até o terminal onde nosso servidor está rodando e apertar **ctrl + c** e depois rodar o comando abaixo:
+Lembre-se que precisamos reiniciar o servidor para que o nosso código seja atualizado, pra isso precisamos ir até o terminal onde nosso servidor está rodando e apertar **ctrl + c** e depois rodar o comando abaixo:
 
 ### Terminal
 ```
@@ -220,12 +220,12 @@ Agora se você voltar ao *broser* e acessar http://localhost:3000 verá a seguin
 # 05. Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon!
 
 ## Objetivo
-Toda vez que fazemos uma alteração no nosso código precisamos ficar reiniciando o servidor na mão, esse trabalho é chato, felizmente temos uma solução desenvolvida pela comunidade chamada **nodemon**. Por tanto, vamos instalar ela mas apenas como uma dependência do ambiente de desenvolvimento dado que não vamos utilizar o **nodemon** em produção.
+Toda vez que fazemos uma alteração no nosso código precisamos ficar reiniciando o servidor na mão, esse trabalho é chato, mas felizmente temos uma solução desenvolvida pela comunidade chamada **nodemon**. Por tanto, vamos instalar ela mas apenas como uma dependência do ambiente de desenvolvimento dado que não vamos utilizar o **nodemon** em produção.
 
-Também vamos criar o nosso primeiro *npm script* para não termos que instalar o **nodemon** como uma dependência global e sim uma dependência apenas do nosso projeto. Sempre que possível é uma boa prática evitar dependências globais porque elas são dificieis de administrar, por exemplo: imagine que temos dois projetos feitos em *node* e ambos estão utilizando o *nodemon* mas os projetos utilizam versões diferentes do *nodemon*. Se você estiver com *nodemon* instalado de forma global só poderá ter um versão do *nodemon* em sua máquina, causando assim a necessidade de ficar trocando de versão do *nodemon* quando trocar o projeto que você estiver trabalhando.
+Também vamos criar o nosso primeiro *npm script* para não termos que instalar o **nodemon** como uma dependência global e sim uma dependência apenas do nosso projeto. Sempre que possível é uma boa prática evitar dependências globais porque elas são difícieis de administrar, por exemplo: imagine que temos dois projetos feitos em *node* e ambos estão utilizando o *nodemon* mas os projetos utilizam versões diferentes do *nodemon*. Se você estiver com *nodemon* instalado de forma global só poderá ter uma versão do *nodemon* em sua máquina, causando assim a necessidade de ficar trocando de versão do *nodemon* quando trocar o projeto que você estiver trabalhando.
 
 ## Passo a passo com código
-1. Para instalar o **nodemon** como uma dependência apenas para o ambiente de desenvolvimento, não deixaremos de utilizar o gerenciador de pacotes do *node* o *npm*, mas dessa vez vamos também passar um parâmetro *--save-dev* para informar que o **nodemon** será apenas útil ao ambiente de *dev* (abreviação que utilziamos pra falar do ambiente de desenvolvimento que vem da palavra me inglês developer):
+1. Para instalar o **nodemon** como uma dependência apenas para o ambiente de desenvolvimento, não deixaremos de utilizar o gerenciador de pacotes do *node* o *npm*, mas dessa vez vamos também passar um parâmetro *--save-dev* para informar que o **nodemon** será apenas útil ao ambiente de *dev* (abreviação que utilizamos pra falar do ambiente de desenvolvimento que vem da palavra em inglês developer):
 
 ### Terminal
 ```
@@ -326,9 +326,7 @@ Feita essa alteração no arquivo **package.json** podemos subir o nosso servido
 npm run dev
 ```
 
-Pronto! Agora toda vez que fizermos uma alteração no nosso código não será mais necessário reiniciar o servidor na mão, o próprio *nodemon* fará o trabalho para nós. 
-
-**--Importante--** Se você criar um arquivo novo e fizer alterações nele o *nodemon* poderá não reconhecer esse arquivo novo, então nesse caso é necessário derrubar o *nodemon* apertando **ctrl + c** e depois rodar o comando ```npm run dev``` no terminal para subir novamente o nosso servidor e a partir desse momento ele saberá que o arquivo que criamos existe e qualquer alteração que vier acontecer será considera e o servidor voltará ser reiniciado novamente.
+Pronto! Agora toda vez que fizermos uma alteração no nosso código não será mais necessário reiniciar o servidor na mão, o próprio *nodemon* fará o trabalho para nós.
 
 # 06. Criando um recurso para retornar os nomes e seus significado
 Primeiro precisamos criar o path **/nome** que terá a responsabilidade de responder todos os nomes cadastrados e seus significados. Como até o momento não temos um banco de dados vamos guardar 3 nomes e seus significados em uma lista. Só escolher três nomes dessa tabela a seguir ou procurar o seu e de duas pessoas que gosta e colocar na lista:
@@ -370,7 +368,7 @@ server.listen(port, () => {
 })
 ```
 
-2. Agora precisamos adicionar os dois parâmetros para a função que passamos no segundo parâmentro do méodo *get*, os parâmentros são *req* e *res*. Em seguida podemos criar um variável chamadas *names* que guardará 3 nomes e seus significados, para podermos passar essa variável dentro do método *send* de nosso parâmetro *res*:
+2. Agora precisamos adicionar os dois parâmetros para a função que passamos no segundo parâmetro do méodo *get*, os parâmetros são *req* e *res*. Em seguida podemos criar um variável chamadas *names* que guardará 3 nomes e seus significados, para podermos passar essa variável dentro do método *send* de nosso parâmetro *res*:
 
 ### Arquivo index.js
 ```
@@ -408,6 +406,6 @@ server.listen(port, () => {
 })
 ```
 
-# 07. O nomes não podem ficar em um lista. Que venha o MongoDB.
+# 07. Crie um recurso pra salvar um nome e seu significado
 
 ## Objetivo
