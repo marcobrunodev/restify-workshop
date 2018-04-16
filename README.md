@@ -13,9 +13,9 @@
 # 01. Como começar um projeto qualquer em NodeJS
 
 ## Objetivo
-Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado npm (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac, mas não sei qual seria o paralelo no Windows.
+Uma vez que você faz a instalação do NodeJS na sua máquina, você instalalou sem perceber um gerenciador de pacote chamado **npm** (Node Package Manager). Esse gerenciador é similar ao apt-get utilizado no Linux ou o homebrew do Mac.
 
-Vamos utilizar o npm para iniciar o nosso projeto com NodeJS definindo as seguintes propriedades do nosso projeto:
+Vamos utilizar o `npm` para iniciar o nosso projeto com NodeJS definindo as seguintes propriedades do nosso projeto:
 - Nome (package name);
 - Versão (version);
 - Descrição (description);
@@ -30,31 +30,29 @@ Vamos utilizar o npm para iniciar o nosso projeto com NodeJS definindo as seguin
 
 ## Passo a passo com código
 
-Crie uma pasta com o nome **restify-workshop** na pasta do seu usuário, gosto de fazer isso utilizando o terminal, se você estiver utilizando Linux ou Mac poderá executar os comandos a seguir em seu terminal (desculpa mas faz um bom tempo que não uso Windows e não sei como fazer isso nele):
-
 ### Terminal
 Para navegar até a pasta do seu usuário:
-```
+```shell
 cd ~
 ```
 
 Para criar a pasta:
-```
+```shell
 mkdir restify-workshop
 ```
 
 Entrar na pasta **restify-workshop**:
-```
+```shell
 cd restify-workshop
 ```
 
 Rodar o comando para definirmos as propriedades do projeto (lembre-se que você tem que estar dentro da pasta **restify-workshop**):
-```
+```shell
 npm init
 ```
 ![Imagem das peguntas que são feitas após o comando npm init](img/npm-init.gif)
 
-Assim que você der o ENTER após o comando você irá começar a responder as peguntas sobre as propriedades do seu projeto, no momento que você terminar de responder essas perguntas, será apresentado um resumo onde você poderá verificar se está tudo certo, uma vez que você confirmar, nesse momento será criado pelo *npm* um arquivo chamado **package.json** e é nesse arquivo que é guardado todas as suas respostas. Vamos falar mais sobre esse arquivo durante os próximos exercícios.
+> Assim que você der o ENTER após o comando você irá começar a responder as peguntas sobre as propriedades do seu projeto, no momento que você terminar de responder essas perguntas, será apresentado um resumo onde você poderá verificar se está tudo certo, uma vez que você confirmar, nesse momento será criado pelo *npm* um arquivo chamado **package.json** e é nesse arquivo que é guardado todas as suas respostas. Vamos falar mais sobre esse arquivo durante os próximos exercícios.
 
 # 02. Como criar um servidor HTTP com Restify
 
@@ -69,7 +67,7 @@ Agora vamos criar um servidor utilizando o Restify que responderá apenas quando
 1. Primeiro vamos instalar o **restify** como uma dependência do nosso projeto. Abra o terminal e o rode o seguinte comando:
 
 ## Terminal
-```
+``` shell
 npm i restify
 ```
 
