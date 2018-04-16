@@ -409,3 +409,141 @@ server.listen(port, () => {
 # 07. Crie um recurso pra salvar um nome e seu significado
 
 ## Objetivo
+Pra conseguir salvar um nome e o seu significado vamos criar um *path* **/nome** que responderá apenas o *method HTTP* (método HTTP) *POST*, no corpo da requisição vamos esperar que o usuário nos mande um *JSON* com duas chaves: name e meaning. A representação do *JSON* deverá ser assim:
+
+```
+{
+  name: "Bruno",
+  meaning: "Pode ter vindo do latim brunus, como do germânico brun, que querem dizer literalmente “marrom" ou "moreno”"
+}
+```
+
+A princípio vamos pegar o *JSON* que vimos anteriormente e adicionar ele em nossa lista ```name```.
+Para testar nosso novo recurso, precisamos de alguma forma fazer um *POST* para ao *path* **/nome**. Até agora utilizamos o *browser* para testar a nosso primeiro *path* porque o *method HTTP* padrão do *browser* é um *GET*, mas como estamos querendo fazer um *POST*, vamos parar de utilizar o *browser* para testar nossa *API* e começar a usar o *Postman*, com ele podemos fazer todos os *methods HTTP* de uma forma simples e feliz :-)
+
+## Passo a passo com código
+1. Vamos abrir o arquivo **index.js** e dentro dele vamos utilizar o *method post* que está disponível em nossa variável ```server```, esse método funciona de forma similar ao método *get* que utilizamos anteriormente, portanto o método *post* recebe 2 parâmetros sendo o primeiro o *path* e o segundo a função que será executada no momento que um usuário realizar um requisição para o *path* informado no primeiro parâmetro, lembre-se que esssa requisção tem que ser no *method HTTP POST*.
+
+### Arquivo index.js
+
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
+})
+
+server.get('/nome', (req, res) => {
+  const names = [
+    {
+      name: 'Henri',
+      meaning: 'O governante da casa, senhor do lar'
+    },
+    {
+      name: 'Joviane',
+      meaning: 'Presente de Júpiter'
+    },
+    {
+      name: 'Luna',
+      meaning: 'Lua, a iluminada, a feminina'
+    }
+  ]
+
+  res.send(names)
+})
+
+server.post('/nome', () => {
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
+2. A função que passamos como segundo parâmetro em ```server.post``` recebe dois parâmentros sendo o primeiro informações sobre a *resquest* e o segundo terá informações sobre a *response*, vamos nomear os parâmentros como ```req``` e ```res```, como já fizemos quando criamos nosso primeiro recurso que mostra todos os nomes e seus significados:
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
+})
+
+server.get('/nome', (req, res) => {
+  const names = [
+    {
+      name: 'Henri',
+      meaning: 'O governante da casa, senhor do lar'
+    },
+    {
+      name: 'Joviane',
+      meaning: 'Presente de Júpiter'
+    },
+    {
+      name: 'Luna',
+      meaning: 'Lua, a iluminada, a feminina'
+    }
+  ]
+
+  res.send(names)
+})
+
+server.post('/nome', (req, res) => {
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
+3. Agora que temos como pegar as informacões da *request* pelo parâmentro ```req``` e podemos trabalhar a **response** pelo ```res```. Com o parâmetro ```res``` em mão conseguimos enviar um *JSON* de teste pra vermos se o nosso *path* está funcionando, nesse *JSON* nós só teremos um chave chamada ```msg``` com o valor ```"O caminho /nome por method HTTP POST está funcionando de boas!"```:
+
+### Arquivo index.js
+```
+const restify = require('restify')
+const port = 3000
+
+const server = restify.createServer()
+
+server.get('/', (req, res) => {
+  res.send({msg: 'Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados'})
+})
+
+server.get('/nome', (req, res) => {
+  const names = [
+    {
+      name: 'Henri',
+      meaning: 'O governante da casa, senhor do lar'
+    },
+    {
+      name: 'Joviane',
+      meaning: 'Presente de Júpiter'
+    },
+    {
+      name: 'Luna',
+      meaning: 'Lua, a iluminada, a feminina'
+    }
+  ]
+
+  res.send(names)
+})
+
+server.post('/nome', (req, res) => {
+  res.send({ msg: "O caminho /nome por method HTTP POST está funcionando de boas!" })
+})
+
+server.listen(port, () => {
+  console.log(`Servidor de pé em http://localhost:${port}`)
+  console.log('Pra derrubar o servidor: ctrl + c')
+})
+```
+
