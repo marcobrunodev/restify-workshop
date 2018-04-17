@@ -57,21 +57,21 @@ npm init
 # 02. Como criar um servidor HTTP com Restify
 
 ## Objetivo
-Criar um servidor HTTP sem utilizar um framework é bem triste e você sofrerá muito, tudo que você sofrerá já foi resolvido pela comunidade por isso usamos um framework como o Restify. Tem outros problemas sobre não usar um framework como mostrei nesse post:
+Criar um servidor HTTP sem utilizar um framework é bem triste e você sofrerá muito, tudo que você sofrerá já foi resolvido pela comunidade por isso usamos um framework como o *Restify*. Tem outros problemas sobre não usar um framework como mostrei nesse post:
 http://blog.caelum.com.br/como-criar-um-servidor-http-com-nodejs
 
-Agora vamos criar um servidor utilizando o Restify que responderá apenas quando o usuário acessar a home em http:localhost:3000
+Agora vamos criar um servidor utilizando o *Restify* que responderá apenas quando o usuário acessar a home em [http:localhost:3000](http:localhost:3000)
 
 ## Passo a passo com código
 
-1. Primeiro vamos instalar o **restify** como uma dependência do nosso projeto. Abra o terminal e o rode o seguinte comando:
+1. Abra seu terminal e execute o comando abaixo para instalar o *restify* como uma dependência do projeto:
 
 ## Terminal
-``` shell
+```shell
 npm i restify
 ```
 
-Após rodar esse comando, você verá que no arquivo **package.json** foi adicionado mais uma chave chamada *dependencies*, dentro dessa chave você terá o **restify** com a identificação de qual versão vamos utilizar do **restify**.
+>Após rodar esse comando, você verá que no arquivo **package.json** foi adicionado mais uma chave chamada *dependencies*, dentro dessa chave você terá o **restify** com a identificação de qual versão vamos utilizar do **restify**.
 
 ## Exemplo de como ficará o seu package.json
 ```
@@ -103,14 +103,16 @@ Após rodar esse comando, você verá que no arquivo **package.json** foi adicio
 ```
 
 
-2. Crie uma arquivo chamado **index.js** dentro da pasta **restify-workshop**, dentro desse arquivos primeiro precisamos chamar a nossa dependência *restify* e guardar ela em uma variável que não varia (uma constante)chamada *restify*:
+2. Desntro da pasta **restify-workshop** crie um arquivo chamado **index.js**, nesse arquivo vamos importar o *restify*:
 
 ### Arquivo index.js
 ```
 const restify = require('restify')
 ```
 
-3. Em seguida precisamos criar um servidor utilizando o *restify*. Para isso utilizamos o método *createSever()* que é um recurso da nossa variável *restify*, esse método retorna pra gente um servidor que guardaremos dentro da varíavel *server* (servidor). Estamos utilizando o nome das variaveis em inglês porque você será cobrado pelo mercado de trabalho para escrever dessa maneira, por favor não me leve a mal se você não souber inglês ou tiver dificuldade como eu também tenho.
+> O `require` é utilizado para importar as dependências, API que o Node ou uma arquivo *JavaScript* que nós mesmo podemos desenvolver. No código anterior utilizamos o `require` para importar o *framework restify* que retorna pra gente um objeto desse *framework que guardamos na `const` com o nome de `restify`.
+
+3. Vamos adicionar uma segunda linha que irá criar o servidor com o *restify*:
 
 ### Arquivo index.js
 ```
@@ -119,7 +121,11 @@ const restify = require('restify')
 const server = restify.createServer()
 ```
 
+> Utilizamos o método `createSever()` que é um recurso da nossa variável `restify`, esse método retorna pra gente um servidor que guardaremos dentro da varíavel `server` (servidor). Estamos utilizando o nome das variaveis em inglês porque você será cobrado pelo mercado de trabalho para escrever dessa maneira, por favor não me leve a mal se você não souber inglês ou tiver dificuldade com ele.
+
 4. Infelizmente não estamos com o nosso servidor de pé só criamos ele, para colocar o servidor de pé precisamos chamar o método *liten* que está disponivel na variavel *server*, esse método espera receber dois parâmetros sendo o primeiro a porta e o segundo uma função que será executada no momento que o servidor estiver disponível, dentro dessa função vamos ter dois *console.log*, um que falará onde o sevidor está de pé e o outro falará como faz para derrubar o servidor. Pra manter a legibilidade do código vamos criar um variável chamada *port* (porta) que guardará a nossa porta com o valor 3000.
+
+4. Agora vamos colocar nosso servidor de pé na porta 3000:
 
 ### Arquivo index.js
 ```
@@ -134,14 +140,29 @@ server.listen(port, () => {
 })
 ```
 
-5. Agora que terminamos o nosso código responsável por criar o nosso servidor, por favor abra o seu terminal e navegue até a pasta do nosso projeto (**restify-workshop**) dentro da pasta rode o comando abaixo para que o nosso código seja rodado pela plataforma NodeJS:
+> O método `listen` disponível no `server` é responsável por colocar o servidor de pé com as configurações que vamos definir nos próximos exercícios. Podemos passar 3 parâmentros, o primeiro é a porta do servidor, segundo o *ip* do servidor e o terceiro a função que será executada no momento que o servidor estiver de pé. Somente o primeiro parâmetro é obrigatório.
+> No nosso código acima só temos dois parâmetros, nesse caso como o segundo parâmentro é uma função o *restify* atribui para o parâmentro *ip* que deixamos de passar o valor padrão que é *localhost*
+
+5. Pra executarmos o código da **index.js**, volte no terminal:
 
 ### Terminal
+Navegue até a pasta do projeto (se já estiver nela ignore esse passo):
+```shell
+cd ~/Desktop/restify-workshop
 ```
+
+Rode o comando baixo pra executarmos a **index.js** com o NodeJS:
+```shell
 node index.js
 ```
 
-Só pra termos certeza que o servidor está de pé vamos até o *browser* (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
+Se tudo deu certo você receberá a seguinte saída no seu terminal
+```shell
+Servidor de pé em http://localhost:3000
+Pra derrubar o servidor: ctrl + c
+```
+
+Pra termos certeza que o servidor está de pé, vamos até o *browser* (navegador) para acessarmos a URL http://localhost:3000, se você tiver uma resposta parecida com a imagem a seguir está tudo certo apesar de ser uma mensagem de erro:
 
 ![](img/resultado-no-browser.png)
 
@@ -155,13 +176,13 @@ Pretendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás de
 # 04. Como criar uma resposta para path /
 
 ## Objetivo
-Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos como resposta um erro que o próprio **restify** criou pra nós, queremos trocar essa mensagem padrão com uma resposta que estará no nosso controle. Nessa reposta vamos implementar um JSON com a chave *msg* e o valor será "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"
+Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos como resposta um erro que o próprio *restify* criou pra nós, queremos trocar essa mensagem padrão com uma resposta que estará no nosso controle. Nessa reposta vamos implementar um *JSON* com a chave `msg` e o valor será `"Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"`.
 
 ## Passo a passo com código
-1. Abra o arquivo **index.js**, dentro dele vamos chamar o método *get* que esta disponível na variável *server*, esse método espera receber dois parâmetros sendo o primeiro qual o *path* que estamos mapeando para criar um resposta e o segundo parâmetro é uma função que será executado no momento que o usuário fizer uma requisição do tipo GET para o *path* que informamos no primeiro parâmetro:
+1. No arquivo **index.js** crie uma rota pra responder ao *path* da *home* que é apenas uma **/**
 
 ### Arquivo index.js
-```
+```javascript
 const restify = require('restify')
 const port = 3000
 
