@@ -179,7 +179,7 @@ Pretendo fazer um vídeo explicando como funciona o HTTP e a teoria por trás de
 Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos como resposta um erro que o próprio *restify* criou pra nós, queremos trocar essa mensagem padrão com uma resposta que estará no nosso controle. Nessa reposta vamos implementar um *JSON* com a chave `msg` e o valor será `"Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados"`.
 
 ## Passo a passo com código
-1. No arquivo **index.js** crie uma rota pra responder ao *path* da *home* que é apenas uma **/**
+1. No arquivo **index.js** crie uma rota pra responder ao *path* da *home* que é apenas uma **/**. Para isso vamos utilizar o método `get` que está disponível na variável `server`:
 
 ### Arquivo index.js
 ```javascript
@@ -197,17 +197,18 @@ server.listen(port, () => {
 })
 ```
 
-2. Pra que a alteração que nós fizemos no nosso código seja atualizado no nosso servidor precisamos reiniciar o nosso servidor, por isso precisamos ir até o terminal onde temos o nosso servidor de pé e derrubar ele apertando **ctrl + c** e logo em seguida rodar novamente o comando a seguir no terminal para colocarmos o servidor de pé novamente:
+> Utilizando o método `get` estamos dizendo que o *path* (**/**) que passamos para ele como primeiro parâmentro só será executado se a requisição for do *method HTTP GET*, o segundo parâmetro que é uma função será executada no momento que uma requisição para a home (**/**) chegar ao servidor, lembrando que essa requisição tem que ser do *method HTTP GET*.
+
+2. É necessário derrubar o servidor e colocar ele novamente de pé, pra isso aperte **ctrl + c** e em seguida execute o comando abaixo (lembre-se que você tem que estar na pasta do projeto):
 
 ### Terminal
 ```
 node index.js
 ```
 
-Se você tentar acessar o nosso servidor pelo browser verá que estão sem resposta e o nosso browser ficará perdido esperando a resposta do servidor.
+Tente acessar [http://localhost:3000](http://localhost:3000) no *browser* e você verá que ele ficará perdido esperando uma resposta.
 
-3. Dentro da função que passamos como segundo parâmetro para o método *get* precisamos criar a nossa resposta com o JSON que terá a chave *msg* e dentro dessa chave o conteúdo "Logo em um futuro próximo nós teremos aqui uma lista dos recursos que você pode acessar em nossa API de nomes e significados".
-Na função que passamos para o método *get* recebe dois parâmetro, sendo o primeiro as informações da *request* (requisição) e o segundo as informações do *response* (resposta), vamos chamar o primeiro parâmetro de *req* e segundo de *res*. Pra responder nossa requisição vamos utilizar o método *send* que está disponível no parâmetro *res*, e o nosso JSON com a chave *msg* será passado como parâmero do método *send*:
+3. Dentro da função que passamos como segundo parâmentro vamos criar uma resposta utilizando o método `send`:
 
 ### Arquivo index.js
 ```
@@ -226,14 +227,15 @@ server.listen(port, () => {
 })
 ```
 
-Lembre-se que precisamos reiniciar o servidor para que o nosso código seja atualizado, pra isso precisamos ir até o terminal onde nosso servidor está rodando e apertar **ctrl + c** e depois rodar o comando abaixo:
+
+4. Sempre que fazemos uma alteração no nosso código é necessario reiniciar o servidor, então pressione **ctrl + c** e em seguinda execute o comando abaixo estando dentro da pasta do projeto:
 
 ### Terminal
 ```
 node index.js
 ``` 
 
-Agora se você voltar ao *broser* e acessar http://localhost:3000 verá a seguinte resposta:
+Agora se você voltar ao *broser* e acessar [http://localhost:3000](http://localhost:3000) verá a seguinte resposta:
 ![](img/primeira-resposta-da-home.png)
 
 # 05. Chato demais ter que ficar reiniciando o servidor na mão. Que venha o nodemon!
