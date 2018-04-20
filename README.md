@@ -66,7 +66,7 @@ Agora vamos criar um servidor utilizando o *Restify* que responderá apenas quan
 
 1. Abra seu terminal e execute o comando abaixo para instalar o *restify* como uma dependência do projeto:
 
-## Terminal
+#### Terminal
 ```shell
 npm i restify
 ```
@@ -105,7 +105,7 @@ npm i restify
 
 2. Desntro da pasta **restify-workshop** crie um arquivo chamado **index.js**, nesse arquivo vamos importar o *restify*:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 ```
@@ -114,7 +114,7 @@ const restify = require('restify')
 
 3. Vamos adicionar uma segunda linha que irá criar o servidor com o *restify*:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 
@@ -127,7 +127,7 @@ const server = restify.createServer()
 
 4. Agora vamos colocar nosso servidor de pé na porta 3000:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
@@ -145,7 +145,7 @@ server.listen(port, () => {
 
 5. Pra executarmos o código da **index.js**, volte no terminal:
 
-### Terminal
+#### Terminal
 Navegue até a pasta do projeto (se já estiver nela ignore esse passo):
 ```shell
 cd ~/Desktop/restify-workshop
@@ -181,7 +181,7 @@ Por enquanto quando acessamos a nosso servidor pelo browser no path / recebemos 
 ## Passo a passo com código
 1. No arquivo **index.js** crie uma rota pra responder ao *path* da *home* que é apenas uma **/**. Para isso vamos utilizar o método `get` que está disponível na variável `server`:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```javascript
 const restify = require('restify')
 const port = 3000
@@ -201,7 +201,7 @@ server.listen(port, () => {
 
 2. É necessário derrubar o servidor e colocar ele novamente de pé, pra isso aperte **ctrl + c** e em seguida execute o comando abaixo (lembre-se que você tem que estar na pasta do projeto):
 
-### Terminal
+#### Terminal
 ```
 node index.js
 ```
@@ -210,7 +210,7 @@ Tente acessar [http://localhost:3000](http://localhost:3000) no *browser* e voc�
 
 3. Dentro da função que passamos como segundo parâmentro vamos criar uma resposta utilizando o método `send`:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
@@ -230,7 +230,7 @@ server.listen(port, () => {
 
 4. Sempre que fazemos uma alteração no nosso código é necessario reiniciar o servidor, então pressione **ctrl + c** e em seguinda execute o comando abaixo estando dentro da pasta do projeto:
 
-### Terminal
+#### Terminal
 ```
 node index.js
 ``` 
@@ -248,14 +248,14 @@ Também vamos criar o nosso primeiro *npm script* para não termos que instalar 
 ## Passo a passo com código
 1. Para instalar o **nodemon** como uma dependência apenas para o ambiente de desenvolvimento, não deixaremos de utilizar o gerenciador de pacotes do *node* o *npm*, mas dessa vez vamos também passar um parâmetro *--save-dev* para informar que o **nodemon** será apenas útil ao ambiente de *dev* (abreviação que utilizamos pra falar do ambiente de desenvolvimento que vem da palavra em inglês developer):
 
-### Terminal
+#### Terminal
 ```
 npm i nodemon --save-dev
 ```
 
 Agora que instalamos o **nodemon** como uma dependência de um ambiente específico, o *npm* adiciona uma nova chave (*devDependencies*) para as dependências do ambiente de *dev*, por isso que o seu **package.json** ficará dessa forma:
 
-### Arquivo package.json
+#### Arquivo package.json
 ```
 {
   "name": "restify-workshop",
@@ -291,21 +291,21 @@ Agora que instalamos o **nodemon** como uma dependência de um ambiente específ
 
 2. Com o **nodemon** instalado, não vamos mais subir o servidor como estavamos fazendo anteriormente:
 
-### Terminal
+#### Terminal
 ```
 node index.js
 ```
 
 No lugar do comando *node* vamos utilizar o comando *node_modules/nodemon/bin/nodemon.js*, por isso vamos subir nosso servidor assim no terminal:
 
-### Terminal
+#### Terminal
 ```
 node_modules/nodemon/bin/nodemon.js index.js
 ``` 
 
 3. Triste ter que escrever um caminho tão grande toda vez que tivermos que utilizar o *nodemon*, felizmente tem uma caminho feliz pra resolver isso, só precisamos ir até o nosso arquivo **package.json** e adicionar um *npm script* com a chave *dev* e nessa chave passar o conteúdo *nodemon index.js*. Ah! Se no seu *package.json* a chave *main* estiver com o valor correto do arquivo que é o início da sua aplicação, então não é necessário passar no conteúdo da chave *dev* o arquivo *index.js* deixando o conteúdo da chave ainda mais simples e apenas com o valor *nodemon*. Isso acontece porque uma vez que não passamos qual é o arquivo que queremos iniciar com o *nodemon* o próprio *nodemon* executa o arquivo que passamos na chave *main*. Bom, altere seu arquivo **package.json** adicionando apenas uma linha de código dentro da chave *scripts* que já existe no arquivo:
 
-### Arquivo package.json
+#### Arquivo package.json
 ```
 {
   "name": "restify-workshop",
@@ -342,7 +342,7 @@ node_modules/nodemon/bin/nodemon.js index.js
 
 Feita essa alteração no arquivo **package.json** podemos subir o nosso servidor utilizando o *nodemon* com o seguinte comando no terminal:
 
-### Terminal
+#### Terminal
 ```
 npm run dev
 ```
@@ -369,7 +369,7 @@ O código para criar essa resposta não tem nada de novo, sendo assim tente impl
 ## Passo a passo com código
 1. Vamos criar um recurso para responder o seguinte *path*: **/nome**. Para isso entre no arquivo **index.js** e utilize o método *get* disponível na nossa variável *server* da mesma forma que fizemos no exercício de criar uma resposta para a o *path* da home (**/**):
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
@@ -391,7 +391,7 @@ server.listen(port, () => {
 
 2. Agora precisamos adicionar os dois parâmetros para a função que passamos no segundo parâmetro do méodo *get*, os parâmetros são *req* e *res*. Em seguida podemos criar um variável chamadas *names* que guardará 3 nomes e seus significados, para podermos passar essa variável dentro do método *send* de nosso parâmetro *res*:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
@@ -445,7 +445,7 @@ Para testar nosso novo recurso, precisamos de alguma forma fazer um *POST* para 
 ## Passo a passo com código
 1. Vamos abrir o arquivo **index.js** e dentro dele vamos utilizar o *method post* que está disponível em nossa variável ```server```, esse método funciona de forma similar ao método *get* que utilizamos anteriormente, portanto o método *post* recebe 2 parâmetros sendo o primeiro o *path* e o segundo a função que será executada no momento que um usuário realizar um requisição para o *path* informado no primeiro parâmetro, lembre-se que esssa requisção tem que ser no *method HTTP POST*.
 
-### Arquivo index.js
+#### Arquivo index.js
 
 ```
 const restify = require('restify')
@@ -487,7 +487,7 @@ server.listen(port, () => {
 
 2. A função que passamos como segundo parâmetro em ```server.post``` recebe dois parâmentros sendo o primeiro informações sobre a *resquest* e o segundo terá informações sobre a *response*, vamos nomear os parâmentros como ```req``` e ```res```, como já fizemos quando criamos nosso primeiro recurso que mostra todos os nomes e seus significados:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
@@ -528,7 +528,7 @@ server.listen(port, () => {
 
 3. Agora que temos como pegar as informacões da *request* pelo parâmentro ```req``` e podemos trabalhar a **response** pelo ```res```. Com o parâmetro ```res``` em mão conseguimos enviar um *JSON* de teste pra vermos se o nosso *path* está funcionando, nesse *JSON* nós só teremos um chave chamada ```msg``` com o valor ```"O caminho /nome por method HTTP POST está funcionando de boas!"```:
 
-### Arquivo index.js
+#### Arquivo index.js
 ```
 const restify = require('restify')
 const port = 3000
