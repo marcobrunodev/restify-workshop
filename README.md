@@ -30,7 +30,7 @@ Vamos utilizar o `npm` para iniciar o nosso projeto com NodeJS definindo as segu
 
 ## Passo a passo com código
 
-### Terminal
+####### Terminal
 Para navegar até a pasta do seu usuário:
 ```shell
 cd ~
